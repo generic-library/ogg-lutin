@@ -8,8 +8,8 @@ def get_desc():
 
 
 def create(target):
-	myModule = module.Module(__file__, 'ogg', 'LIBRARY')
-	myModule.add_src_file([
+	my_module = module.Module(__file__, 'ogg', 'LIBRARY')
+	my_module.add_src_file([
 		'ogg/ogg/framing.c',
 		'ogg/ogg/bitwise.c',
 		'ogg/tremor/floor0.c',
@@ -26,16 +26,16 @@ def create(target):
 		'ogg/tremor/info.c',
 		'ogg/tremor/mapping0.c'
 		])
-	myModule.compile_version_CC(1989, gnu=True)
-	myModule.compile_flags('c', "-Wno-duplicate-decl-specifier")
+	my_module.compile_version_CC(1989, gnu=True)
+	my_module.compile_flags('c', "-Wno-duplicate-decl-specifier")
 	if target.name=="Android":
-		myModule.compile_flags('c', "-DBYTE_ORDER=1")
-		myModule.compile_flags('c', "-DBIG_ENDIAN=0")
-		myModule.compile_flags('c', "-DLITTLE_ENDIAN=1")
-	myModule.add_export_path(tools.get_current_path(__file__) + "/ogg")
-	myModule.add_path(tools.get_current_path(__file__)+"/ogg/ogg/")
-	myModule.add_path(tools.get_current_path(__file__)+"/ogg/tremor/")
-	return myModule
+		my_module.compile_flags('c', "-DBYTE_ORDER=1")
+		my_module.compile_flags('c', "-DBIG_ENDIAN=0")
+		my_module.compile_flags('c', "-DLITTLE_ENDIAN=1")
+	my_module.add_export_path(tools.get_current_path(__file__) + "/ogg")
+	my_module.add_path(tools.get_current_path(__file__)+"/ogg/ogg/")
+	my_module.add_path(tools.get_current_path(__file__)+"/ogg/tremor/")
+	return my_module
 
 
 
