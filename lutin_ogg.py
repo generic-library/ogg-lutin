@@ -75,6 +75,10 @@ def create(target, module_name):
 		'ogg/ogg/os_types.h'
 		],
 		destination_path="ogg")
+	my_module.add_module_depend([
+		    'c',
+		    'm'
+		    ])
 	return my_module
 
 
