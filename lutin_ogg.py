@@ -43,11 +43,11 @@ def create(target, module_name):
 		'ogg/tremor/mapping0.c'
 		])
 	my_module.compile_version("c", 1989, gnu=True)
-	my_module.compile_flags('c', "-Wno-duplicate-decl-specifier")
-	if target.name=="Android":
-		my_module.compile_flags('c', "-DBYTE_ORDER=1")
-		my_module.compile_flags('c', "-DBIG_ENDIAN=0")
-		my_module.compile_flags('c', "-DLITTLE_ENDIAN=1")
+	my_module.add_flag('c', "-Wno-duplicate-decl-specifier")
+	if "Android" in target.get_type():
+		my_module.add_flag('c', "-DBYTE_ORDER=1")
+		my_module.add_flag('c', "-DBIG_ENDIAN=0")
+		my_module.add_flag('c', "-DLITTLE_ENDIAN=1")
 	my_module.add_path(os.path.join(tools.get_current_path(__file__), "ogg"))
 	my_module.add_path(os.path.join(tools.get_current_path(__file__), "ogg/ogg"))
 	my_module.add_path(os.path.join(tools.get_current_path(__file__), "ogg/tremor"))
@@ -75,7 +75,7 @@ def create(target, module_name):
 		'ogg/ogg/os_types.h'
 		],
 		destination_path="ogg")
-	my_module.add_module_depend([
+	my_module.add_depend([
 		    'c',
 		    'm'
 		    ])
